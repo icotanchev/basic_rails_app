@@ -1,0 +1,19 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+
+
+development:
+  <<: *default
+  database: sito_daily_report_development
+
+test:
+  <<: *default
+  database: sito_daily_report_test
+
+production:
+  <<: *default
+  database: sito_daily_report_production

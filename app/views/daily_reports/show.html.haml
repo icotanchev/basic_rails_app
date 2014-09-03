@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Client:
+  = @daily_report.client_id
+%p
+  %strong Price:
+  = @daily_report.price
+= link_to 'Edit', edit_daily_report_path(@daily_report)
+|
+\#{link_to 'Back', daily_reports_path}
