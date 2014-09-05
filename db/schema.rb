@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20140903090303) do
     t.string   "company"
     t.string   "owner"
     t.string   "name"
-    t.integer  "id_number"
+    t.string   "id_number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

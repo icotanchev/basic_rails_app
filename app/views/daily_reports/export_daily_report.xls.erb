@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+					xmlns:o="urn:schemas-microsoft-com:office:office"
+					xmlns:x="urn:schemas-microsoft-com:office:excel"
+					xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+					xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Фирми</Data></Cell>
+        <Cell><Data ss:Type="String">Сума</Data></Cell>
+        <Cell><Data ss:Type="String">Инфо.</Data></Cell>
+      </Row>
+
+			<Row>
+				<Cell><Data ss:Type="String">Др. <%= @file[:person] %></Data></Cell>
+      </Row>
+
+			<% @file.each_pair do |key, value| %>
+			<% next if %(person total_amount daily_cost).include? key.to_s %>
+			<% value.each do |val| %>
+			<Row>
+				<Cell><Data ss:Type="String"><%= key %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= val.first %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= val.last %></Data></Cell>
+      </Row>
+			<% end %>
+			<% end %>
+
+			<Row>
+        <Cell><Data ss:Type="String">Разходи</Data></Cell>
+			</Row>
+			<% @file[:daily_cost].each do |daily_cost_val| %>
+			<% next if daily_cost_val.nil?  %>
+			<Row>
+        <Cell><Data ss:Type="String"><%= daily_cost_val.first %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= daily_cost_val.last %></Data></Cell>
+			</Row>
+			<% end %>
+
+			<Row>
+        <Cell><Data ss:Type="String">Крайна сума</Data></Cell>
+        <Cell><Data ss:Type="String"><%= @file[:total_amount] %></Data></Cell>
+			</Row>
+
+    </Table>
+  </Worksheet>
+</Workbook>

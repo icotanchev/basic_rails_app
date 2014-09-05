@@ -3,8 +3,7 @@ ruby '2.0.0'
 
 gem 'rails', '4.0.5'
 gem 'mysql2', '~> 0.3.13'
-gem 'devise', '~> 3.0.0'
-
+gem 'rubyXL', '~> 3.2.3', require: false
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'therubyracer', '~> 0.12.1'
@@ -15,13 +14,13 @@ gem 'jbuilder', '~> 2.0'
 gem 'sass-rails', '~> 4.0.3'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails', '~> 2.1.1.20140710'
-gem 'rest_in_place'
+gem 'chosen-rails', '~> 1.1.0'
 
 group :development, :test do
   gem 'spring', '~> 1.1.3'
   gem 'rspec-rails', '~> 2.13.1'
   gem 'quiet_assets', '~> 1.0.2'
-  gem 'brakeman', '~> 2.6.1', :require => false
+  gem 'brakeman', '~> 2.6.1', require: false
 end
 
 group :test do
