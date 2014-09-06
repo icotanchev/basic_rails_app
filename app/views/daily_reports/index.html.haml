@@ -1,4 +1,4 @@
-%h1 New daily report
+%h1 Daily Report
 
 = form_tag('daily_reports/export_daily_report') do
   = hidden_field_tag :export_daily_report_hidden_field_id, '2'
@@ -6,12 +6,13 @@
   = text_field_tag :person
 
   = render partial: 'daily_report'
-
+  
   %div#daily_report_field_id
   %div#daily_report_cost_id
   .row
     .field
-      .col-md-4
+      .col-md-3
+      .col-md-1
         %span.glyphicon.glyphicon-plus#add_daily_report_field_id
         %span.glyphicon.glyphicon-minus#add_daily_cost_field_id
       .col-md-4
@@ -23,3 +24,7 @@
   .actions
     = hidden_field_tag :format, :xls
     = submit_tag 'Export', remote: true, id: 'submit_daily_report_id', data: { confirm: "Are you sure?" }
+
+%br
+  
+= render 'amount_by_banknote'

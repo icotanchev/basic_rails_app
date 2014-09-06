@@ -22,6 +22,7 @@ jQuery(function($) {
 	addDailyReportFields();
 	addDailyCostFields();
 	chosenCssInit();
+	callculateAmountByBanknote();
 });
 
 function validatePriceField() {
@@ -38,6 +39,10 @@ function validatePriceField() {
 			} else {
 				separator =	$(this)[0].value.indexOf('.');
 				$(this)[0].value = $(this)[0].value.slice(0, separator+3);
+			}
+
+			if($(this)[0].value.length - $(this)[0].value.indexOf('.') == 2){
+				$(this)[0].value = $(this)[0].value + "0";
 			}
 
 			if($(this)[0].value.match(amount_pattern))
@@ -106,4 +111,18 @@ function addDailyCostFields() {
 			url: '/daily_reports/add_daily_cost_fields',
 		});
   });
+}
+
+function callculateAmountByBanknote() {
+	field_ids = { "hundred" : 100, "fifty" : 50, "twenty" : 20, "ten" : 10, "five" : 5, "two" : 2 };
+
+	jQuery(".amount_by_banknot_class").bind("change", function() {
+		var total_amount = 0;
+
+		jQuery.each(field_ids, function(index, value) {
+			total_amount = total_amount + $("#"+index)[0].value * field_ids[index];
+		});
+
+		document.getElementById("amount_by_banknot_id").innerHTML = String(total_amount);
+	});
 }
