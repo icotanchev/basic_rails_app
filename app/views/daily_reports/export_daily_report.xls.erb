@@ -31,7 +31,7 @@
         <Cell><Data ss:Type="String">Разходи</Data></Cell>
 			</Row>
 			<% @file[:daily_cost].each do |daily_cost_val| %>
-			<% next if daily_cost_val.nil?  %>
+			<% next if daily_cost_val.first.nil? && daily_cost_val.last.nil? %>
 			<Row>
         <Cell><Data ss:Type="String"><%= daily_cost_val.first %></Data></Cell>
         <Cell><Data ss:Type="String"><%= daily_cost_val.last %></Data></Cell>

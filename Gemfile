@@ -15,6 +15,10 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails', '~> 2.1.1.20140710'
 gem 'chosen-rails', '~> 1.1.0'
+gem 'capistrano', '~> 3.1.0'
+gem 'capistrano-bundler', '~> 1.1.2'
+gem 'capistrano-rails', '~> 1.1.1'
+gem 'capistrano-rvm', github: "capistrano/rvm"
 
 group :development, :test do
   gem 'spring', '~> 1.1.3'
