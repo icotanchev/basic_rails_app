@@ -1,10 +1,8 @@
 # encoding: UTF-8
 require 'rails'
 require 'rubyXL'
-require 'pry'
 
 #class ClientImport
-binding.pry
 path = File.join(Rails.root, 'files', 'clients', 'clients_xls.xlsx')
 workbook = RubyXL::Parser.parse(path)
 

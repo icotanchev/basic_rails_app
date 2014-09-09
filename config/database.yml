@@ -15,5 +15,9 @@ test:
   database: daily_report_test
 
 production:
-  <<: *default
+	adapter: mysql2				
+  encoding: utf8
+  username: root
+  password:	91tan4ev91
+  socket: /tmp/mysql.sock
   database: daily_report_production
