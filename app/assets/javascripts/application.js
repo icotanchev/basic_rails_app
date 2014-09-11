@@ -96,6 +96,7 @@ function addDailyReportFields() {
 	jQuery('#add_daily_report_field_id').bind('click', function() {
 		var field_value = document.getElementById('export_daily_report_hidden_field_id').value;
 		document.getElementById('export_daily_report_hidden_field_id').value = parseInt(field_value) + 1;
+
     jQuery.ajax({
       type: "POST",
 			url: '/daily_reports/add_daily_report_fields',
@@ -106,9 +107,13 @@ function addDailyReportFields() {
 
 function addDailyCostFields() {
 	jQuery('#add_daily_cost_field_id').bind('click', function() {
+		var field_value = document.getElementById('export_daily_report_costs_hidden_field_id').value;
+		document.getElementById('export_daily_report_costs_hidden_field_id').value = parseInt(field_value) + 1;
+
     jQuery.ajax({
       type: "POST",
 			url: '/daily_reports/add_daily_cost_fields',
+			data: { cost_counter: field_value }
 		});
   });
 }

@@ -14,6 +14,7 @@ class DailyReportsController < ApplicationController
   end
 
   def add_daily_cost_fields
+    @cost_counter = params[:cost_counter]
     respond_to do |format|
       format.js
     end
@@ -46,7 +47,6 @@ class DailyReportsController < ApplicationController
     hash[:daily_cost] = []
 
     (1..params[:counter].to_i).to_a.each do |row|
-      hash[:daily_cost] << [params["cost_#{row}"], params["cost_additional_info_#{row}"]]
       if params["company_#{row}"] != ''
         client = params["company_#{row}"]
         hash[params["company_#{row}"]] = [[params["price_#{row}"], params["additional_info_#{row}"]]]
@@ -54,6 +54,11 @@ class DailyReportsController < ApplicationController
         hash[client] << [params["price_#{row}"], params["additional_info_#{row}"]]
       end
     end
+
+    (1..params[:cost_counter].to_i).to_a.each do |costs|
+      hash[:daily_cost] << [params["cost_#{costs}"], params["cost_additional_info_#{costs}"]] if params["cost_#{costs}"]
+    end
+
     hash
   end
 end

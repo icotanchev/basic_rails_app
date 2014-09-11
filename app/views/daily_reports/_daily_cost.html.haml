@@ -1,17 +1,17 @@
 .field
   .row
     .col-md-1
-      - if @counter.nil?
-        = @counter = 1
+      - if @cost_counter.nil?
+        = @cost_counter = 1
       - else
-        = @counter
+        = @cost_counter
 
-      = hidden_field_tag :counter, @counter
+      = hidden_field_tag :cost_counter, @cost_counter
     .col-md-3
     .col-md-2
       = label_tag 'Cost: '
-      = text_field_tag "cost_#{@counter}", '0.00', class: 'cost_field_class', onchange: "validatePriceField();"
+      = text_field_tag "cost_#{@cost_counter}", '0.00', class: 'cost_field_class', onchange: "validatePriceField();"
     .col-md-3
       = label_tag 'Additional_info: '
-      = text_field_tag "cost_additional_info_#{@counter}"
+      = text_field_tag "cost_additional_info_#{@cost_counter}"
 
