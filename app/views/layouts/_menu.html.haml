@@ -7,6 +7,9 @@
       %a{href: root_path} Daily Report
     %li
       %a{href: users_path} Users
+    %li
+      %a{href: clients_path} Clients
+
   %ul.nav.navbar-nav.navbar-right
     %li.dropdown
       %a.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
@@ -15,11 +18,11 @@
           %span.caret
       %ul.dropdown-menu{role: 'menu'}
         - if signed_in?
-          %li
-            %a{href: edit_user_registration_path} Edit Profile
-          %li
-            %a{href: '#'}
-          %li.divider
+          - if current_user.admin?
+            %li
+              %a{href: edit_user_registration_path} Edit Profile
+            %li
+              %a{href: '#'}
           %li
             = link_to 'Log Out', destroy_user_session_path, :method => :delete
         - else

@@ -8,12 +8,12 @@ default: &default
 
 development:
   <<: *default
-  database: daily_report_development
+  database: sito_system_development
 
 test:
   <<: *default
-  database: daily_report_test
+  database: sito_system_test
 
 production:
   <<: *default
-  database: daily_report_production
+  database: sito_system_production

@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 20140917101334) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "login"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "job_title"

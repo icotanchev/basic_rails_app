@@ -13,4 +13,4 @@ def secure_token
   end
 end
 
-SitoDailyReporting::Application.config.secret_key_base = secure_token
+SitoSystem::Application.config.secret_key_base = secure_token
