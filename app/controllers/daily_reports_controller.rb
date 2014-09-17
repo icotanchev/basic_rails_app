@@ -1,5 +1,3 @@
-require 'pry'
-
 class DailyReportsController < ApplicationController
   respond_to :xml, :html
 
@@ -25,7 +23,7 @@ class DailyReportsController < ApplicationController
       render 'index.html.haml' 
 
     else
-      @file = noemalize_params(params)
+      @file = normalize_params(params)
       
       filename = "#{Time.now.to_s(:db)[0..10]}_#{@file[:person]}"
       respond_to do |format|
@@ -39,7 +37,7 @@ class DailyReportsController < ApplicationController
 
   private
 
-  def noemalize_params(params)
+  def normalize_params(params)
     hash = {}
     client = ''
     hash[:person] = params[:person]
