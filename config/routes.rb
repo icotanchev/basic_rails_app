@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users
+  resources :users
+
   root to: "daily_reports#index"
 
   resources :daily_reports do
