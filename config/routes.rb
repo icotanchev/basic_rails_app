@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
 
-  root to: "daily_reports#index"
+  root to: "daily_reports#new"
 
   resources :daily_reports do
     collection do

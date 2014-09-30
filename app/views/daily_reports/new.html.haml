@@ -1,0 +1,32 @@
+%h2 New Daily Report
+
+= form_for(@daily_report) do |f|
+  = hidden_field_tag :export_daily_report_hidden_field_id, '2'
+  = hidden_field_tag :export_daily_report_costs_hidden_field_id, '2'
+  = label_tag 'Person: '
+  = select_tag :person, options_from_collection_for_select(doctor_users, :id, :first_name), include_blank: true, prompt: 'Select Doctor', class: 'chosen-select', id: 'select_doctor_id'
+
+  = render partial: 'daily_report'
+  
+  %div#daily_report_field_id
+  %div#daily_report_cost_id
+  .row
+    .field
+      .col-md-3
+      .col-md-1
+        %span.glyphicon.glyphicon-plus#add_daily_report_field_id
+        %span.glyphicon.glyphicon-minus#add_daily_cost_field_id
+      .col-md-4
+        = label_tag 'Total: '
+        %span#total_amount_id
+          = 0.00
+        = hidden_field_tag :hidden_field_total_amount_id, '0.00'
+    
+  .actions
+    = f.submit 'Create Report'
+%br
+  
+= render 'amount_by_banknote'
+
+-# :javascript
+-#   chosenCssInit();

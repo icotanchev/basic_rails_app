@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   before_create :set_default_role
 
+  has_many :daily_report
+
   def full_name
     [first_name, last_name].join(' ')
   end

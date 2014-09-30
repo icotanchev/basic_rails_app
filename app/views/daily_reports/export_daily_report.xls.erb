@@ -12,11 +12,11 @@
         <Cell><Data ss:Type="String">Инфо.</Data></Cell>
       </Row>
 
+			<% @file.each do |hash| %>
 			<Row>
-				<Cell><Data ss:Type="String">Др. <%= @file[:person] %></Data></Cell>
+				<Cell><Data ss:Type="String">Др. <%= hash[:person] %></Data></Cell>
       </Row>
-
-			<% @file.each_pair do |key, value| %>
+			<% hash.each_pair do |key, value| %>
 			<% next if %(person total_amount daily_cost).include? key.to_s %>
 			<% value.each do |val| %>
 			<Row>
@@ -27,7 +27,7 @@
 			<% end %>
 			<% end %>
 
-			<% @file[:daily_cost].each do |daily_cost_val| %>
+			<% hash[:daily_cost].each do |daily_cost_val| %>
 			<% next if daily_cost_val.first == '' %>
 			<Row>
 				<Cell><Data ss:Type="String">Разход</Data></Cell>
@@ -38,8 +38,10 @@
 
 			<Row>
         <Cell><Data ss:Type="String">Крайна сума</Data></Cell>
-        <Cell><Data ss:Type="String"><%= @file[:total_amount] %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= hash[:total_amount] %></Data></Cell>
 			</Row>
+			<Row></Row>				
+			<% end %>
 
     </Table>
   </Worksheet>

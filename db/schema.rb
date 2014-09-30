@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140917101334) do
+ActiveRecord::Schema.define(version: 20140917113347) do
 
   create_table "clients", force: true do |t|
     t.string   "company"
@@ -23,11 +23,14 @@ ActiveRecord::Schema.define(version: 20140917101334) do
   end
 
   create_table "daily_reports", force: true do |t|
-    t.integer  "client_id"
-    t.integer  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "daily_report"
+    t.integer  "user_id"
+    t.string   "price"
   end
+
+  add_index "daily_reports", ["user_id"], name: "index_daily_reports_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "first_name"

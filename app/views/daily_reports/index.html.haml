@@ -1,31 +1,20 @@
-%h1 Daily Report
+%h1 Lists Dailt Reports
 
-= form_tag('daily_reports/export_daily_report') do
-  = hidden_field_tag :export_daily_report_hidden_field_id, '2'
-  = hidden_field_tag :export_daily_report_costs_hidden_field_id, '2'
-  = label_tag 'Person: '
-  = text_field_tag :person
-
-  = render partial: 'daily_report'
-  
-  %div#daily_report_field_id
-  %div#daily_report_cost_id
-  .row
-    .field
-      .col-md-3
-      .col-md-1
-        %span.glyphicon.glyphicon-plus#add_daily_report_field_id
-        %span.glyphicon.glyphicon-minus#add_daily_cost_field_id
-      .col-md-4
-        = label_tag 'Total: '
-        %span#total_amount_id
-          = 0.00
-        = hidden_field_tag :hidden_field_total_amount_id, '0.00'
-    
-  .actions
-    = hidden_field_tag :format, :xls
-    = submit_tag 'Export', remote: true, id: 'submit_daily_report_id', data: { confirm: "Are you sure?" }
-
-%br
-  
-= render 'amount_by_banknote'
+= form_tag export_daily_report_daily_reports_path(:format => 'xls')  do
+  .table-responsive
+    %table.table
+      %thead
+        %tr
+          %th For Export
+          %th Created At
+          %th Doctor
+          %th Amount
+      %tbody
+        - @daily_reports.each do |report|
+          %tr
+            %td= check_box_tag "export_reports[#{report.id}]"
+            %td= report.created_at.to_s(:db)[0..10]
+            %td= User.find(report.user.id).first_name
+            %td= report.price
+  .action
+    = submit_tag 'Export'

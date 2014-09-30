@@ -1,0 +1,35 @@
+= form_for(@daily_report) do |f|
+  - if @daily_report.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@daily_report.errors.count, "error")
+        prohibited this client from being saved:
+      %ul
+        - @daily_report.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :person
+    %br/
+    = f.select :user_id, options_from_collection_for_select(doctor_users, :id, :first_name), include_blank: true, prompt: 'Select Doctor', class: 'chosen-select', id: 'select_doctor_id'
+
+    = render partial: 'daily_report'
+  
+    %div#daily_report_field_id
+    %div#daily_report_cost_id
+    .row
+      .field
+        .col-md-3
+        .col-md-1
+          %span.glyphicon.glyphicon-plus#add_daily_report_field_id
+          %span.glyphicon.glyphicon-minus#add_daily_cost_field_id
+        .col-md-4
+          = label_tag 'Total: '
+          %span#total_amount_id
+            = 0.00
+          = hidden_field_tag :hidden_field_total_amount_id, '0.00'
+
+  .actions
+    = f.submit
+
+= render 'amount_by_banknote'

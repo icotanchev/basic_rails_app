@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'rubyXL'
 
 print 'Creating Admin profile... '
@@ -5,14 +6,14 @@ print 'Creating Admin profile... '
 User.where(email: 'h.tanchev@sito92.com').delete_all
 User.create!(
   email: 'h.tanchev@sito92.com',
-  first_name: 'Hristo',
-  last_name: 'Tanchev',
+  first_name: 'Христо',
+  last_name: 'Танчев',
   password: 'Test1234!!!!',
   role: 'admin')
 puts 'done!'
 
 print 'Creating Doctors profile... '
-%w(Kiro Venci Krasi Georgi Rumen).each do |person|
+%w(Киро Венци Краси Румен).each do |person|
 	User.create!(
 							email: "#{person}@sito92.com",
 						  first_name: person,
