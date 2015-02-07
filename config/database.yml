@@ -8,12 +8,12 @@ default: &default
 
 development:
   <<: *default
-  database: sito_system_development
+  database: basic_rails_development
 
 test:
   <<: *default
-  database: sito_system_test
+  database: basic_rails_test
 
 production:
   <<: *default
-  database: sito_system_production
+  database: basic_rails_production

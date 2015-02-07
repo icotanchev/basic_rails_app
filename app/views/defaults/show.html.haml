@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @default.name
+
+= link_to 'Edit', edit_default_path(@default)
+\|
+= link_to 'Back', defaults_path

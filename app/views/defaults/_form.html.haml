@@ -1,0 +1,13 @@
+= form_for @default do |f|
+  - if @default.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@default.errors.count, "error")} prohibited this default from being saved:"
+      %ul
+        - @default.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .actions
+    = f.submit 'Save'

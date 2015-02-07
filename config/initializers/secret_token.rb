@@ -13,4 +13,4 @@ def secure_token
   end
 end
 
-SitoSystem::Application.config.secret_key_base = secure_token
+BasicRailsApp::Application.config.secret_key_base = secure_token

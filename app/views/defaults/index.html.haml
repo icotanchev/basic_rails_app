@@ -1,0 +1,21 @@
+%h1 Listing defaults
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th
+      %th
+      %th
+      
+  %tbody
+    - @defaults.each do |default|
+      %tr
+        %td= default.name
+        %td= link_to 'Show', default
+        %td= link_to 'Edit', edit_default_path(default)
+        %td= link_to 'Destroy', default, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Default', new_default_path

@@ -1,16 +1,8 @@
 Rails.application.routes.draw do
+  resources :defaults
+
   devise_for :users
   resources :users
 
-  root to: "daily_reports#new"
-
-  resources :daily_reports do
-    collection do
-      post :export_daily_report
-      post :add_daily_report_fields
-      post :add_daily_cost_fields
-    end
-  end
-
-  resources :clients
+  root to: "defaults#index"
 end
