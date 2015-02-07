@@ -7,7 +7,6 @@ Spork.prefork do
   require 'rspec/rails'
   require 'database_cleaner'
   require 'capybara/rspec'
-  # require 'webmock/rspec'
   require 'capybara/poltergeist'
   require 'factory_girl_rails'
   # require 'rspec/autorun'
@@ -31,7 +30,6 @@ Spork.prefork do
     config.infer_base_class_for_anonymous_controllers = true
 
     # Filters
-    config.treat_symbols_as_metadata_keys_with_true_values = true
     config.run_all_when_everything_filtered = true
     config.filter_run :focus
     config.filter_run_excluding :broken

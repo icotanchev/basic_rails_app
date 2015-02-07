@@ -16,10 +16,6 @@ class User < ActiveRecord::Base
     self.role == 'admin'
   end
 
-  def doctor?
-  	self.role == 'doctor'
-  end
-
   def user? 
   	self.role == 'user'
   end
